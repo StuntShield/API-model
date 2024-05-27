@@ -2,8 +2,9 @@
 StuntShield - Capstone Project Group : C241-PS386. Machine Learning Model for Children's Stunting Prediction
 
 ## Machine Learning Team
-Bangkit ID|Name|University|Learning Path|LinkedIn
-|--|--|--|--|--|--|
+
+|Bangkit ID|Name|University|Learning Path|LinkedIn
+|--|--|--|--|--
 |M237D4KY3302|Sayid Mabrur Rabbani Al Baba|Machine Learning|Universitas Komputer Indonesia|[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)]((https://www.linkedin.com/in/sayid-mabrur-r-553174191/))|
 |M193D4KY3179|Iksan Wijaya|Machine Learning|Universitas Bina Sarana Informatika|[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)]((https://www.linkedin.com/in/iksan-wijaya-0616662b3/))|
 |M121D4KY3041|Ivan Sahattua Sitanggang|Machine Learning|Universitas Telkom Surabaya|[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ivan-sitanggang-/)|
