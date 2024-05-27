@@ -19,4 +19,8 @@ StuntShield - Capstone Project Group : C241-PS386. Machine Learning Model for Ch
 - Tensorflow -> An open-source framework for machine learning and deep learning, used for building and training models.
 - Flask -> A lightweight web framework for building web applications and API in Python, in this project used for building  backend model API.
 - API Keras from Tensorflow -> An API running on top of TensorFlow, designed for easy and fast prototyping of deep learning models.
+- VSCode ->  As the main IDE for the Backend Development.
+- Github -> A platform for store, share, and collaborate on code projects.
+- Google Collab -> A hosted service that lets you run Jupyter Notebooks with no setup and access to GPUs and TPUs.
+
 
