@@ -140,8 +140,8 @@ def recommend_food():
     params = {
             'status_gizi': request.args.get('status_gizi'),
             'jenis_kelamin': request.args.get('jenis_kelamin'),
-            'tinggi_badan': request.args.get('tinggi_badan'),
-            'umur': request.args.get('umur'),
+            'tinggi_badan': float(request.args.get('tinggi_badan')),
+            'umur': float(request.args.get('umur')),
             }
 
     protein, calories = calculate_nutrients(params)
