@@ -8,6 +8,7 @@ import tensorflow as tf
 from flask import Flask, jsonify, request
 from google.cloud import storage
 from dotenv import load_dotenv
+import pickle
 
 load_dotenv()
 
@@ -95,7 +96,71 @@ def predict_stunting():
             },
             "data": None,
         }),HTTPStatus.METHOD_NOT_ALLOWED
-        
+
+# Food recommender Endpoint
+
+# helper function
+def calculate_nutrients(params: dict):
+    stunting_level = 0
+    if params['status_gizi'] == 'stunted':
+        stunting_level = 1
+    elif params['status_gizi'] == 'tinggi':
+        stunting_level = 2
+    elif params['status_gizi'] == 'severly stunted':
+        stunting_level = 3
+    protein = (params['tinggi_badan']/2) + (stunting_level*10)
+    kal = protein + (params['umur']+1)*65
+
+    return [protein, kal]
+
+
+def get_food_result(arr_idx: list):
+    food_data = pd.read_csv('resources/food.csv').iloc[:, 1:]
+    results = food_data.iloc[arr_idx].to_dict(orient='records')
+    mapped_data = [
+        {
+            'nama': item['Nama'],
+            'keterangan': item['Kategori'],
+            'nutrisi': {
+                'kalori': item['Kalori (kkal)'],
+                'protein': item['Protein (g)'],
+                'lemak': item['Lemak (g)']
+            }
+        }
+        for item in results
+    ]
+
+    return mapped_data
+
+
+@app.route("/food-recommendation", methods=["GET"])
+def recommend_food():
+
+    # define request parameters
+    params = {
+            'status_gizi': request.args.get('status_gizi'),
+            'jenis_kelamin': request.args.get('jenis_kelamin'),
+            'tinggi_badan': request.args.get('tinggi_badan'),
+            'umur': request.args.get('umur'),
+            }
+
+    protein, calories = calculate_nutrients(params)
+
+    # prediction
+    model_path = 'model/recommender_model.h5'
+    model_pipeline = pickle.load(open(model_path, 'rb'))
+    prediction = model_pipeline.transform([[protein, calories]])[0]
+
+    # return 5 recommended foods
+
+    results = get_food_result(prediction)
+
+    return jsonify({
+        "status": HTTPStatus.OK,
+        "data": results
+    }), HTTPStatus.OK
+
 
 if __name__ == "__main__":
     app.run()
+
