@@ -68,8 +68,7 @@ def predict_stunting():
                 fieldnames = ["Umur (bulan)", "Jenis Kelamin", "Tinggi Badan (cm)","Status Gizi"]
                 writer = csv.DictWriter(file, fieldnames=fieldnames)
                 writer.writeheader()
-                for row in data:
-                    writer.writerow(row)
+                writer.writerow(data)
             blob = bucket.blob('Users_input/'+file_csv+str(random.randint(10000,99999)) )
             blob.upload_from_filename(file_path)
             os.remove(file_path)
@@ -163,4 +162,3 @@ def recommend_food():
 
 if __name__ == "__main__":
     app.run()
-
