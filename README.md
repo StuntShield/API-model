@@ -1,3 +1,5 @@
+# Deprecated (moved to another https://github.com/StuntShield/stuntshield-api)
+
 # StuntShield-Stunting-Prediction
 StuntShield - Capstone Project Group : C241-PS386. Machine Learning Model for Children's Stunting Prediction
 
